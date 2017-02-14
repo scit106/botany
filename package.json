@@ -1,0 +1,25 @@
+{
+  "name": "botany",
+  "version": "1.0.0",
+  "description": "Starter botany",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scit106/botany.git"
+  },
+  "author": "Scott Istvan, Michael Bernstein",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scit106/botany/issues"
+  },
+  "homepage": "https://github.com/scit106/botany#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
