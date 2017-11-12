@@ -19,14 +19,24 @@ client.get('search/tweets', {q: 'trump'}, function(error, tweets, response) {
 		};
 	});
 
-	// This thing-a-ma-bober retweets positive tweets
 	_.forEach(filteredTweets, function(originalTweet) {
 		m.seed(s, function () {
 			// console.log(sentimentalTweet);
 
-			var response = m.respond(originalTweet.tweetText);
+			var markovResponse = m.respond(originalTweet.tweetText);
 			console.log(originalTweet.tweetText);
-			console.log(response);
+			var tweetResponse = ''; // String that will be sent back
+			var tweetSize = 140; // character max
+
+			_.forEach(markovResponse, function(bigram) {
+				var nextTweet = tweetResponse + ' ' + bigram;
+				if (nextTweet.length > tweetSize) {
+					return false;
+				} else {
+					tweetResponse = nextTweet;
+				}
+			});
+			console.log(tweetResponse);
 		});
 
 		// client.post('statuses/retweet/' + sentimentalTweet.id, function(error, tweet, response) {
