@@ -1,4 +1,4 @@
-// To run this file, type 'node tweet.js'
+// To run this file, type 'node argue-bot'
 
 var _ = require('lodash');
 var fs = require('fs');
@@ -8,7 +8,7 @@ var markov = require('markov');
 var client = require('./twitter-setup').client;
 
 // Markov fun!
-var m = markov(2);
+var m = markov();
 var s = fs.createReadStream(__dirname + '/speeches.txt');
 
 client.get('search/tweets', {q: 'trump'}, function(error, tweets, response) {
@@ -24,9 +24,9 @@ client.get('search/tweets', {q: 'trump'}, function(error, tweets, response) {
 		m.seed(s, function () {
 			// console.log(sentimentalTweet);
 
-			var response = m.respond(originalTweet.tweetText, 5);
+			var response = m.respond(originalTweet.tweetText);
 			console.log(originalTweet.tweetText);
-			console.log(response.toString()).join(' ');
+			console.log(response);
 		});
 
 		// client.post('statuses/retweet/' + sentimentalTweet.id, function(error, tweet, response) {
