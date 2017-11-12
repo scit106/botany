@@ -1,2 +1,2 @@
 # botany
-Twat Bot
+Twitter Bots!
