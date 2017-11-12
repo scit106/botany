@@ -14,7 +14,7 @@ client.get('search/tweets', {q: 'puppies'}, function(error, tweets, response) {
 		return {
 			score: sentimentObject.score,
 			tweetText: tweet.text,
-			tweetId: tweet.id
+			tweetId: tweet.id_str
 		};
 	});
 
@@ -25,10 +25,10 @@ client.get('search/tweets', {q: 'puppies'}, function(error, tweets, response) {
 		return sentimentalTweet.score > sentimentThreshold;
 	});
 
-
 	// This thing-a-ma-bober retweets positive tweets
 	_.forEach(positiveTweets, function(sentimentalTweet) {
-		client.post('statuses/retweet/' + sentimentalTweet.id, function(error, tweet, response) {
+		console.log('statuses/retweet/' + sentimentalTweet.tweetId);
+		client.post('statuses/retweet/' + sentimentalTweet.tweetId, function(error, tweet, response) {
 			if (!error) {
 		    	console.log('Error:', tweet);
 			}

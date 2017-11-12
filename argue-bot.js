@@ -37,6 +37,7 @@ client.get('search/tweets', {q: 'trump'}, function(error, tweets, response) {
 				}
 			});
 			console.log(tweetResponse);
+			console.log("=======");
 		});
 
 		// client.post('statuses/retweet/' + sentimentalTweet.id, function(error, tweet, response) {
